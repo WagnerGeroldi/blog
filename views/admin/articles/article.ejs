@@ -28,7 +28,6 @@
             </td>
             <td>
               <form
-                style="display: inline"
                 action="/admin/article/delete"
                 method="post"
                 onsubmit="handleClick(event, this)"
@@ -36,9 +35,6 @@
                 <input type="hidden" value="<%= artigo.id %>" name="id" />
                 <button class="btn btn-danger">Excluir</button>
               </form>
-              <a href="/admin/article/update/<%=artigo.id%>">
-                <button class="btn btn-warning">Alterar</button></a
-              >
             </td>
             
           </tr>

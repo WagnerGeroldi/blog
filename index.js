@@ -4,8 +4,8 @@ const app = express();
 const bodyParser = require("body-parser");
 
 /*imports app*/
-const routes = require("./routes");
-const connection = require('./database/db');
+const routes = require("./src/routes");
+const connection = require('./src/database/db');
 
 /*ejs*/
 app.set("view engine", "ejs");

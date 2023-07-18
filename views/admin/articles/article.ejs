@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <%- include('../../partials/head.ejs') %>
+  <body>
+    <%- include('../../partials/navbar.ejs') %>
+
+    <div class="container mt-5">
+      <h2 class="text-center">Lista de Artigos</h2>
+      <hr />
+      <a href="/admin/article/new" class="btn btn-success">Novo Artigo</a>
+      <table class="table table-responsive table-hover mt-5">
+        <thead>
+          <th>Nome</th>
+          <th>Categoria</th>
+          <th>Data de Criação</th>
+          <th>Ações</th>
+        </thead>
+        <tbody>
+          <% artigos.forEach(artigo => { %>
+
+          <tr>
+            <td><%= artigo.title %></td>
+            <td>
+              <%= artigo.category.title %>
+            </td>
+            <td>
+              <%= new Date(Date.parse(artigo.createdAt)).toLocaleString() %>
+            </td>
+            <td>
+              <form
+                style="display: inline"
+                action="/admin/article/delete"
+                method="post"
+                onsubmit="handleClick(event, this)"
+              >
+                <input type="hidden" value="<%= artigo.id %>" name="id" />
+                <button class="btn btn-danger">Excluir</button>
+              </form>
+              <a href="/admin/article/update/<%=artigo.id%>">
+                <button class="btn btn-warning">Alterar</button></a
+              >
+            </td>
+            
+          </tr>
+
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+  <script>
+    function handleClick(e, form) {
+      e.preventDefault();
+
+      let c = confirm("Deseja Excluir este artigo?");
+
+      if (c) {
+        form.submit();
+      }
+    }
+  </script>
+</html>

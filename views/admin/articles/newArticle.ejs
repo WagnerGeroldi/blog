@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <%- include('../../partials/head.ejs') %>
+  <body>
+    <%- include('../../partials/navbar.ejs') %>
+
+    <div class="container">
+      <div class="card mt-5">
+        <h5 class="card-header">Novo Artigo</h5>
+        <div class="card-body">
+          <form action="/admin/article/save" method="POST">
+            <div class="row g-3">
+              <div class="col-12">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Digite o titulo"
+                  aria-label="Digite o titulo"
+                  name="name"
+                  id="name"
+                  required
+                />
+              </div>
+              <label for="category"> Categoria </label>
+              <select name="category" id="category" class="form-control" required>
+                <option value="">Selecione uma opção</option>
+                <% categorias.forEach(categoria => { %>
+                  <option value=" <%= categoria.id %>"><%= categoria.title %> </option>
+                  <% }) %>
+              </select>
+              <div class="col-12">
+                <textarea
+                  id="article"
+                  name="article"
+                  placeholder="Digite o texto aqui..."
+                >
+                </textarea>
+              </div>
+            </div>
+            <button class="btn btn-primary mt-5" type="submit">
+              Cadastrar artigo
+            </button>
+            <a class="btn btn-danger mt-5" href="/admin/article/list">
+              Cancelar
+            </a>
+          </form>
+        </div>
+      </div>
+      <hr />
+    </div>
+  </body>
+
+  <script src="/tinymce/tinymce.min.js"></script>
+  <script>
+    tinymce.init({
+      selector: "#article",
+      plugins: [
+        "advlist autolink link image lists print preview hr searchreplace wordcount paste emoticons",
+      ],
+    });
+  </script>
+</html>

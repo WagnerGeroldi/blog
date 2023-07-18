@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <%- include('../../partials/head.ejs') %>
+  <body>
+    <%- include('../../partials/navbar.ejs') %>
+
+    <div class="container mt-5">
+      <h2 class="text-center">Lista de categorias</h2>
+      <hr />
+      <a href="/admin/category/new" class="btn btn-success">Nova Categoria</a>
+      <table class="table table-responsive table-hover mt-5">
+        <thead>
+          <th>Nome</th>
+          <th>Ações</th>
+        </thead>
+        <tbody>
+          <% categorias.forEach(categoria => { %>
+
+          <tr>
+            <td><%= categoria.title %></td>
+            <td>
+              <form
+              style="display: inline;"
+                action="/admin/category/delete"
+                method="post"
+                onsubmit="handleClick(event, this)"
+              >
+                <input type="hidden" value="<%= categoria.id %>" name="id" />
+                <button class="btn btn-danger">Excluir</button>
+              </form>
+              <a href="/admin/category/update/<%=categoria.id%>">
+              <button class="btn btn-warning">Alterar</button></a>
+            </td>
+          </tr>
+
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+  <script>
+    function handleClick(e, form) {
+      e.preventDefault();
+
+      let c = confirm("Deseja Excluir esta categoria?");
+
+      if (c) {
+        form.submit();
+      }
+    }
+  </script>
+</html>

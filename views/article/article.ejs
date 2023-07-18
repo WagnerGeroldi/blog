@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <%- include('../partials/head.ejs') %>
+  <body>
+    <%- include('../partials/homeNavBar.ejs') %>
+
+
+    <div class="container">
+
+        <h2 class="mt-5 text-center"><%= artigo.title %></h2>
+        <p>
+            <%- artigo.body %>
+        </p>
+    </div>
+  </body>
+</html>

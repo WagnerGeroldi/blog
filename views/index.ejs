@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <%- include('partials/head.ejs') %>
+  <body>
+    <%- include('partials/homeNavBar.ejs') %>
+
+
+    <div class="container">
+      <h2 class="text-center mt-5">Artigos</h2>
+      <% artigos.forEach(artigo => { %>
+
+        <div class="card mt-5">
+          <h5 class="card-header"><%= artigo.title %></h5>
+          <div class="card-body">
+            <a href="/article/<%= artigo.id%>">
+              <button class="btn btn-primary"> Ler Artigo</button>
+            </a>
+          </div>
+        </div>
+
+        <% }) %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <%- include('../../partials/head.ejs') %>
+  <body>
+    <%- include('../../partials/navbar.ejs') %>
+
+    <div class="container">
+      <div class="card mt-5">
+        <h5 class="card-header">Atualização de Categoria</h5>
+        <div class="card-body">
+          <form action="/admin/category/update" method="POST">
+            <div class="row g-3">
+              <div class="col">
+                <input type="hidden" name="id" value="<%= categoria.id %>">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Digite a categoria"
+                  aria-label="Digite a categoria"
+                  name="name"
+                  id="name"
+                  required
+                  value="<%= categoria.title %>"
+                />
+              </div>
+            </div>
+            <button class="btn btn-primary mt-5" type="submit">
+              Alterar
+            </button>
+            <a class="btn btn-danger mt-5" href="/admin/category/list">
+              Cancelar
+            </a>
+          </form>
+        </div>
+      </div>
+      <hr>
+    </div>
+  </body>
+</html>
